@@ -46,15 +46,13 @@ public class StudentRegistration extends ActionBarActivity implements View.OnCli
 
     public void onClick(View v) {
 
-        boolean student = false;
-        student = datasource.insertIntoBase(name.getText().toString(),
+        if(datasource.insertIntoBase(name.getText().toString(),
                 Integer.parseInt(age.getText().toString()),
-                Integer.parseInt(registration.getText().toString()));
-
-        if(student)
-            Toast.makeText(this, "Aluno criado com sucesso!", Toast.LENGTH_SHORT);
-        else
-            Toast.makeText(this, "O aluno não pode ser criado..tente novamente", Toast.LENGTH_SHORT);
+                Integer.parseInt(registration.getText().toString()))) {
+            Toast.makeText(this, "Aluno criado com sucesso!", Toast.LENGTH_SHORT).show();
+            this.finish();
+        } else
+            Toast.makeText(this, "O aluno não pode ser criado..tente novamente", Toast.LENGTH_SHORT).show();
 
     }
 

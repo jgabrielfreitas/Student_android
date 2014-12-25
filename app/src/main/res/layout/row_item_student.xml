@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome: Gabriel"
+        android:textSize="20dp"
+        android:textColor="#1e1e1e"
+        android:id="@+id/rowNameTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#999"
+        android:text="Matrícula: 12345667"
+        android:id="@+id/rowRegistrationTextView"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/rowNameTextView"
+        android:layout_alignLeft="@+id/rowNameTextView"
+        android:layout_marginBottom="5dp"
+        android:layout_alignStart="@+id/rowNameTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#999"
+        android:layout_marginBottom="10dp"
+        android:text="Tipo: Adulto"
+        android:id="@+id/rowTypeTextView"
+        android:layout_below="@+id/rowRegistrationTextView"
+        android:layout_alignLeft="@+id/rowRegistrationTextView" />
+</RelativeLayout>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         optionsArray.add("Criar aluno");
         optionsArray.add("Ver lista de alunos");
+        optionsArray.add("Zerar lista de alunos");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>( this,
                                                                 android.R.layout.simple_list_item_1,
@@ -42,7 +44,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listMenu.setOnItemClickListener(this);
         dao = new StudentDAO(getApplicationContext());
         dao.open();
-
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -50,25 +51,23 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         switch (position) {
 
             case 0:
-                Intent intent = new Intent(this, StudentRegistration.class);
-                startActivity(intent);
+                doIntent(StudentRegistration.class);
                 break;
 
             case 1:
+                doIntent(ShowAllStudents.class);
+                break;
 
+            case 2:
+                dao.drop();
+                Toast.makeText(this, "Lista zerada!", Toast.LENGTH_SHORT).show();
                 break;
         }
 
     }
 
-    protected void onResume() {
-        super.onResume();
-        Log.i("QUERY>", StudentRepository.DATABASE_CREATE);
-
-        if(dao.getAllStudents().size() > 0)
-            for (Student student : dao.getAllStudents())
-                Log.i("student_base", student.toString());
-        else
-            Log.i("student_base", "empty base...");
+    private void doIntent(Class mClass){
+        Intent intent = new Intent(this, mClass);
+        startActivity(intent);
     }
 }

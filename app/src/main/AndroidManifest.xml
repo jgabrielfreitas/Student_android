@@ -19,6 +19,14 @@
             android:name=".StudentRegistration"
             android:label="@string/title_activity_student_registration" >
         </activity>
+        <activity
+            android:name=".ShowAllStudents"
+            android:label="@string/title_activity_show_all_students" >
+        </activity>
+        <activity
+            android:name=".UpdateStudent"
+            android:label="@string/title_activity_update_student" >
+        </activity>
     </application>
 
 </manifest>

@@ -47,6 +47,42 @@ public class StudentDAO {
         }
     }
 
+    public void drop(){
+        String query = "DROP TABLE IF EXISTS " + StudentRepository.TABLE_STUDENT;
+        sqLiteDatabase.execSQL(query);
+        sqLiteDatabase.execSQL(StudentRepository.DATABASE_CREATE);
+    }
+
+    public boolean updateStudent(String name, int age, int registration){
+        String query = "UPDATE " + StudentRepository.TABLE_STUDENT +
+                       " SET "   + StudentRepository.STUDENT_NAME + " = '" + name +
+                       "' , "    + StudentRepository.STUDENT_AGE  + " = " + age +
+                       " WHERE " + StudentRepository.STUDENT_REGISTRATION + " = "+ registration;
+
+        try {
+            Log.d("update_query", query);
+            sqLiteDatabase.execSQL(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteStudent(int registration){
+        String query = "DELETE FROM " + StudentRepository.TABLE_STUDENT +
+                       " WHERE " + StudentRepository.STUDENT_REGISTRATION + " = " + registration;
+
+        try {
+            Log.d("delete_query", query);
+            sqLiteDatabase.execSQL(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public Student createOrInsertStudent(String name, Integer age, Integer registration){
 
         ContentValues values = new ContentValues();
